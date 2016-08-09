@@ -1,4 +1,4 @@
-- hosts: controller_nodes;compute_nodes
+- hosts: controller_nodes,compute_nodes
   tasks:
   - name: Update SSH daemon configuration file
     template: 
@@ -7,4 +7,9 @@
       owner: root
       group: root
       mode: '0644'
+    notify:
+    - Restart SSH service
+  handlers:
+  - name: Restart SSH service
+    service: name=sshd state=restarted
   
