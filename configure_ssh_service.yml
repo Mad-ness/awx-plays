@@ -1,8 +1,10 @@
-- name: Update SSH daemon configuration file
-  template: 
-    src: sshd_config.j2
-    dest: /etc/ssh/sshd_config
-    owner: root
-    group: root
-    mode: '0644'
-
+- hosts: controller_nodes;compute_nodes
+  tasks:
+  - name: Update SSH daemon configuration file
+    template: 
+      src: sshd_config.j2
+      dest: /etc/ssh/sshd_config
+      owner: root
+      group: root
+      mode: '0644'
+  
