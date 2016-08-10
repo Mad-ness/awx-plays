@@ -1,0 +1,12 @@
+# This name to be used for interface naming
+INTERFACE_NAME={{ item.ifname }}
+
+# This group should be used across all involved hosts
+VXLAN_MULTICAST_GROUP={{ item.multicast_group}}
+
+# This port should be used across all involved hosts
+VXLAN_DST_PORT={{ item.dst_port }}
+
+# Same ID should be used on all hosts
+VXLAN_ID={{ item.vxlan_id }}
+

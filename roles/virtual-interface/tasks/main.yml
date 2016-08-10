@@ -1,0 +1,4 @@
+---
+- include: iftype_{{ item.type }}.yml
+  with_items: virtual_interfaces
+

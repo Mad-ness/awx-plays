@@ -1,0 +1,20 @@
+---
+interface_type: vxlan
+vxlan_multicast_group: 224.0.0.12
+vxlan_id: 19
+
+
+virtual_interfaces:
+- type: vxlan
+  ifname: api0
+  vxlan_options:
+  - vxlan_id: 2
+    multicast_group: 224.0.0.1
+    dst_port: 14144
+- type: vxlan
+  ifname: net0
+  vxlan_options:
+  - vxlan_id: 3
+    multicast_group: 224.0.0.2
+    dst_port: 14145
+
