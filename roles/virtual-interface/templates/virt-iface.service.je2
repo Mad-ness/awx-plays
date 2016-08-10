@@ -1,5 +1,5 @@
 [Unit]
-Description=Create a VXLAN interface {{ item.ifname }}
+Description=Create a VXLAN interface {{ interface_details.ifname }}
 Wants=network.target
 Before=network.target
 
@@ -7,7 +7,7 @@ Before=network.target
 Type=oneshot
 RemainAfterExit=true
 User=root
-EnvironmentFile=/etc/sysconfig/osvirt-network-{{ item.ifname }}.conf
+EnvironmentFile=/etc/sysconfig/osvirt-network-{{ interface_details.ifname }}.conf
 ExecStart=/usr/sbin/ip link add ${INTERFACE_NAME} type vxlan id ${VXLAN_ID} group ${VXLAN_MULTICAST_GROUP} dstport ${VXLAN_DST_PORT}
 ExecStart=/usr/sbin/ip link set dev ${INTERFACE_NAME} up
 ExecStop=/usr/sbin/ip link del ${INTERFACE_NAME}

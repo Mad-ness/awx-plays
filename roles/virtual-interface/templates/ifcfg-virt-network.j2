@@ -1,7 +1,7 @@
 # 
 # It's autoconfigured by Ansible
 #
-DEVICE="{{ item.ifname }}"
+DEVICE="{{ interface_details.ifname }}"
 ONBOOT="yes"
 TYPE="Ethernet"
 IPV4_FAILURE_FATAL="no"
