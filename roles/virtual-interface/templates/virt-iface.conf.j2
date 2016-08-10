@@ -2,11 +2,11 @@
 INTERFACE_NAME={{ interface_details.ifname }}
 
 # This group should be used across all involved hosts
-VXLAN_MULTICAST_GROUP={{ interface_details.vxlan_options.multicast_group}}
+VXLAN_MULTICAST_GROUP={{ interface_details.vxlan_multicast_group}}
 
 # This port should be used across all involved hosts
-VXLAN_DST_PORT={{ interface_details.vxlan_options.dst_port }}
+VXLAN_DST_PORT={{ interface_details.vxlan_dst_port }}
 
 # Same ID should be used on all hosts
-VXLAN_ID={{ interface_details.vxlan_options.id }}
+VXLAN_ID={{ interface_details.vxlan_id }}
 
