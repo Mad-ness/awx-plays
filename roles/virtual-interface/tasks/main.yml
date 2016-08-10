@@ -1,6 +1,6 @@
 ---
-- include: iftype_{{ outer_item.type }}.yml
+- include: iftype_{{ interface_details.type }}.yml
   with_items: '{{ virtual_interfaces }}'
   loop_control: 
-    loop_var: outer_item
+    loop_var: interface_details
 

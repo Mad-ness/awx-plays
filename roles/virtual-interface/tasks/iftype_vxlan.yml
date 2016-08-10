@@ -3,21 +3,19 @@
 - name: Installing configuration file of virtual network interface(s)
   template:
     src: virt-iface.conf.j2
-    dest: /etc/sysconfig/virt-iface-{{ item.ifname }}.conf
+    dest: /etc/sysconfig/virt-iface-{{ interface_details.ifname }}.conf
     owner: root
     group: root
     mode: "0644"
-  with_items: virtual_intefaces
 
 
 - name: Installing systemd units for each of interfaces
   template:
     src: virt-iface.service.j2   
-    dest: /etc/systemd/system/virt-iface-{{ item.ifname }}.service
+    dest: /etc/systemd/system/virt-iface-{{ interface_details.ifname }}.service
     owner: root
     group: root
     mode: "0644"
-  with_items: virtual_interfaces
 
 
 - name: Reloading systemd daemon to ensure the new services are recognized properly
@@ -25,17 +23,15 @@
 
 
 - name: Ensure the new services are started and autostarted
-  service: name=virt-iface-{{ item.ifname }} state=started enabled=on
-  with_items: virtual_interfaces
+  service: name=virt-iface-{{ interface_details.ifname }} state=started enabled=on
 
 
 - name: Installing ifcfg configuration
   template: 
     src: ifcfg-virt-network.j2
-    dest: /etc/sysconfig/network-scripts/ifcfg-{{ item.ifname }}
+    dest: /etc/sysconfig/network-scripts/ifcfg-{{ interface_details.ifname }}
     owner: root
     group: root
     mode: "0644"
-  with_items: virtual_interfaces
 
 
